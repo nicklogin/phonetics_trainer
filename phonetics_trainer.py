@@ -33,8 +33,9 @@ def main():
     print('зациклить выдачу?')
     order = input()
     if debarize(order) == 'да':
-        while True:
-            n = int(input ('введите количество бросков: '))
+        answer = ''
+        while answer != 'стоп':
+            n = random.randint(1,1000)
             dispersion = []
             r = random.randint(0,l)
             dispersion.append(r)

@@ -16,6 +16,35 @@ def debarize(line):
             lin1 += i
     return lin1
 
+def get_last_coincide(a,b):
+    coincide_nmb = -1
+    for sym_nmb in range(len(a)):
+        if sym_nmb == len(b):
+            break
+        
+        if a[sym_nmb] == b[sym_nmb]:
+            coincide_nmb += 1
+        else:
+            break
+    return coincide_nmb
+
+def debug_snd_characteristic_check(snd):
+    snds = preparesnds('consonants')
+    snds.update(preparesnds('vowels'))
+    print(snds)
+    chr = debarize(input())
+    s = debarize(snds[snd])
+    print(chr)
+    print(s)
+    if chr == s:
+        print('ok')
+    else:
+        print('something wrong!')
+        divergence = get_last_coincide(chr,s) + 1
+        print('divergence at ' + str(divergence))
+        print(s[divergence])
+        print(chr[divergence])
+
 def main():
     print('consonants,vowels or all?')
     x = input()
@@ -35,7 +64,7 @@ def main():
     if debarize(order) == 'да':
         answer = ''
         while answer != 'стоп':
-            n = random.randint(1,1000)
+            n = random.randint(2,10)
             dispersion = []
             r = random.randint(0,l)
             dispersion.append(r)
@@ -80,6 +109,7 @@ def main():
                 print('Правильный ответ - '+snds[ks[r]])
             a += 1
         print(str(s)+'/'+str(a))
+
         
 if __name__ == '__main__':
     main()
